@@ -19,9 +19,9 @@ if( defined( $inputFile ) ){
 
   while( <INFILE> ){
   	chomp;
-    my ( $seq, $id ) = ( $_ =~ /([\w\W]+?)[\s\t]+([\w\W]+)/ );
+    my ( $seq, $id ) = ( $_ =~ /([\w\W]*?)[\s\t]+([\w\W]+)/ );
     $seq =~ s/(\w{60})/$1\n/g;
-    print ">$id\n$seq\n";
+    print ">$id\n$seq\n" if length($seq) > 0;
   }
 
   close INFILE;
@@ -30,9 +30,9 @@ if( defined( $inputFile ) ){
 
   while( <> ){
     chomp;
-    my ( $seq, $id ) = ( $_ =~ /([\w\W]+?)[\s\t]+([\w\W]+)/ );
+    my ( $seq, $id ) = ( $_ =~ /([\w\W]*?)[\s\t]+([\w\W]+)/ );
     $seq =~ s/(\w{60})/$1\n/g;
-    print ">$id\n$seq\n";
+    print ">$id\n$seq\n" if length($seq) > 0;
   }
 }
 
